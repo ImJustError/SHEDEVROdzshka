@@ -29,14 +29,14 @@ int PrintArray(ArrayPeoples List) {// vivod
 
 
 int AddNewPeople(ArrayPeoples* List,char* name, char* surname) {
-	List->count++;
-	List->array = MemReAlloc(sizeof(People) * List->count, *List);
+	List->count++;//chetchik +1
+	List->array = MemReAlloc(sizeof(People) * List->count, *List);//perevidelenie pamyati
 	People NewPeople;
-	NewPeople.name = MemAlloc(MAX_SIZE_STR * sizeof(char));
+	NewPeople.name = MemAlloc(MAX_SIZE_STR * sizeof(char));// vidilenie pamyati dlya imeni i familii
 	if (!NewPeople.name)return 1;
 	NewPeople.surname = MemAlloc(MAX_SIZE_STR * sizeof(char));
 	if (!NewPeople.surname)return 1;
-	strcpy_s(NewPeople.name, MAX_SIZE_STR - 1, name);
+	strcpy_s(NewPeople.name, MAX_SIZE_STR - 1, name);//copirovanie imeni i familii v chelika
 	strcpy_s(NewPeople.surname, MAX_SIZE_STR - 1, surname);
 	List->array[List->count - 1] = NewPeople;
 	return 0;
