@@ -3,17 +3,17 @@
 
 #define MAX_SIZE_STR 50
 
-typedef struct people {// стуктурка человечка
+typedef struct people {// stryktyra cheloveka
 	char* name;
 	char* surname;
 }People;
 
-typedef struct { // структура списка человечков
+typedef struct { // stryktyra spiska 
 	struct people* array;
 	int count;
 }ArrayPeoples;
 
-typedef int(*sortAlg)(People* people1, People* people2);// основная цель дзшки проверить знание использование этой хуйни
+typedef int(*sortAlg)(People* people1, People* people2);// glavnaya hueta
 
 int InitializationList(ArrayPeoples* List);
 int PrintArray(ArrayPeoples List);

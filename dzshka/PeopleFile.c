@@ -12,12 +12,12 @@ void* MemAlloc(int size);
 void* MemReAlloc(int size, ArrayPeoples List);
 
 int InitializationList(ArrayPeoples* List) {
-	List->array = NULL;// короче тут просто нулевой делаем массив а то мб будут ошибки 
+	List->array = NULL;// prosto prikol xz zachem
 	List->count = 0;
 	return 0;
 }
 
-int PrintArray(ArrayPeoples List) {// хз просто функция вывода листа
+int PrintArray(ArrayPeoples List) {// vivod
 	printf("-*-*-*-*");
 	for (int i = 0; i < List.count; i++) {
 		printf("\n%s\n%s\n", List.array[i].name, List.array[i].surname);
@@ -29,32 +29,32 @@ int PrintArray(ArrayPeoples List) {// хз просто функция вывода листа
 
 
 int AddNewPeople(ArrayPeoples* List,char* name, char* surname) {
-	List->count++;//счетчик +1
-	List->array = MemReAlloc(sizeof(People) * List->count, *List);// перевыделение памяти на +1 человека
+	List->count++;
+	List->array = MemReAlloc(sizeof(People) * List->count, *List);
 	People NewPeople;
-	NewPeople.name = MemAlloc(MAX_SIZE_STR * sizeof(char));// выделение памяти на имя 
+	NewPeople.name = MemAlloc(MAX_SIZE_STR * sizeof(char));
 	if (!NewPeople.name)return 1;
-	NewPeople.surname = MemAlloc(MAX_SIZE_STR * sizeof(char));// на его фамилию
+	NewPeople.surname = MemAlloc(MAX_SIZE_STR * sizeof(char));
 	if (!NewPeople.surname)return 1;
-	strcpy_s(NewPeople.name, MAX_SIZE_STR - 1, name);// копируем имя в человечка
+	strcpy_s(NewPeople.name, MAX_SIZE_STR - 1, name);
 	strcpy_s(NewPeople.surname, MAX_SIZE_STR - 1, surname);
 	List->array[List->count - 1] = NewPeople;
 	return 0;
 }
 
-void* MemAlloc(int size) {//функцияя выделения памяти с проверкой ошибок
+void* MemAlloc(int size) {
 	void* pointer = malloc(size);
 	if (!pointer) printf("\nerror alloc mem\n"); 
 	return pointer;
 }
 
-void* MemReAlloc(int size,ArrayPeoples List ) {// перевыделение с проверкой
+void* MemReAlloc(int size,ArrayPeoples List ) {
 	void* pointer = realloc(List.array,size);
 	if (!pointer) printf("\nerror alloc mem\n");
 	return pointer;
 }
 
-int freeArray(ArrayPeoples* List) {// освобождение массива
+int freeArray(ArrayPeoples* List) {// osvobojdenie massiva
 	for (int i = 0; i < List->count; i++) {
 		free(List->array[i].name);
 		free(List->array[i].surname);
@@ -63,19 +63,19 @@ int freeArray(ArrayPeoples* List) {// освобождение массива
 	return 0;
 }
 
-void sortbyname(People* people1, People* people2) {// ффунция для сравнения двух человечков по имени
+void sortbyname(People* people1, People* people2) {// sort po imeni
 	if (strcmp(people1->name, people2->name) > 0) {
 		swap(people1, people2);
 	}
 }
 
-void sortbysurname(People* people1, People* people2) {// по фамилии
+void sortbysurname(People* people1, People* people2) {// sort po familii
 	if (strcmp(people1->surname, people2->surname) > 0) {
 		swap(people1, people2);
 	}
 }
 
-void swap(People* people1, People* people2) {// меняет двух человечков местами если надо
+void swap(People* people1, People* people2) {// menyaet dvyx chelikov
 	People tmp = *people1;
 	*people1 = *people2;
 	*people2 = tmp;
@@ -83,7 +83,7 @@ void swap(People* people1, People* people2) {// меняет двух человечков местами е
 
 
 
-void bublesort(ArrayPeoples* List,sortAlg func1) {// хз просто сама сортировка
+void bublesort(ArrayPeoples* List,sortAlg func1) {// sama sortirovka
 	
 	for (int i = 0; i < List->count-1; i++) {
 		for (int j = 0; j < List->count-1; j++) {
