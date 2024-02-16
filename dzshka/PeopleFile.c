@@ -22,7 +22,7 @@ int PrintArray(ArrayPeoples List) {// vivod
 	for (int i = 0; i < List.count; i++) {
 		printf("\n%s\n%s\n", List.array[i].name, List.array[i].surname);
 		if(i+1!= List.count)printf("--------");
-		else printf("-*-*-*-*\n");
+		else printf("-*-*-*-*\n\n\n\n");
 	}
 	return 0;
 }
